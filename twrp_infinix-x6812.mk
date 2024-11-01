@@ -16,8 +16,13 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 # Inherit from x6812 device
 $(call inherit-product, device/infinix/infinix-x6812/device.mk)
 
-PRODUCT_DEVICE := x6812
+PRODUCT_DEVICE := infinix-x6812
 PRODUCT_NAME := infinix-x6812
 PRODUCT_BRAND := infinix
-PRODUCT_MODEL := infinix hot 11s
+PRODUCT_MODEL := infinix x6812
 PRODUCT_MANUFACTURER := infinix
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRIVATE_BUILD_DESC="vnd_x6812_h6912-user 11 RP1A.200720.011 435922 release-keys"
+
+BUILD_FINGERPRINT := Infinix/X6812-GL/Infinix-X6812:11/RP1A.200720.011/230921V645:user/release-keys
