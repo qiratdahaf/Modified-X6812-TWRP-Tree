@@ -14,7 +14,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Inherit from x6812 device
-$(call inherit-product, device/infinix-x6812/x6812/device.mk)
+$(call inherit-product, device/infinix/infinix-x6812/device.mk)
 
 PRODUCT_DEVICE := x6812
 PRODUCT_NAME := infinix-x6812
