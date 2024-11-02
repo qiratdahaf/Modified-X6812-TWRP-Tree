@@ -123,6 +123,7 @@ BOARD_INFINIX_DYNAMIC_PARTITIONS_PARTITION_LIST := \
 # Workaround for error copying vendor and product files to recovery ramdisk
 TARGET_COPY_OUT_VENDOR := vendor
 TARGET_COPY_OUT_PRODUCT := product
+TARGET_COPY_OUT_SYSTEM_EXT = system_ext
 
 # Metadata
 BOARD_USES_METADATA_PARTITION := true
