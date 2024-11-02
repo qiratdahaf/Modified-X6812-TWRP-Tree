@@ -29,8 +29,7 @@ AB_OTA_PARTITIONS += \
     vbmeta \
     vbmeta_system \
     vbmeta_vendor \
-    vendor \
-    vendor_boot
+    vendor 
 
 # Virtual A/B
 ENABLE_VIRTUAL_AB := true
@@ -80,8 +79,8 @@ PRODUCT_PACKAGES += \
     libhealthd.$(PRODUCT_PLATFORM)
 
 # Soong
-PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
+#PRODUCT_SOONG_NAMESPACES += \
+ #   $(LOCAL_PATH)
 
 # Fastbootd
 PRODUCT_PACKAGES += \
