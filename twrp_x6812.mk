@@ -23,7 +23,7 @@ BUILD_FINGERPRINT := Infinix/X6812-GL/Infinix-X6812:11/RP1A.200720.011/230921V64
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := X6812
-PRODUCT_NAME := twrp_X6812
+PRODUCT_NAME := infinix-x6812
 PRODUCT_BRAND := Infinix
 PRODUCT_MODEL := Infinix HOT 11s
 PRODUCT_MANUFACTURER := infinix
