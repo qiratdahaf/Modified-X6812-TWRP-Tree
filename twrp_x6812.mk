@@ -14,10 +14,12 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Inherit from x6812 device
-$(call inherit-product, device/infinix/x6812/device.mk)
+#$(call inherit-product, device/infinix/x6812/device.mk)
 
+# Forcefully add mtp support (adb is already there)
 PRODUCT_BUILD_PROP_OVERRIDES += \
   PRIVATE_BUILD_DESC="vnd_x6812_h6912-user 11 RP1A.200720.011 435922 release-keys"
+  persist.sys.usb.config=mtp
 
 BUILD_FINGERPRINT := Infinix/X6812-GL/Infinix-X6812:11/RP1A.200720.011/230921V645:user/release-keys
 
