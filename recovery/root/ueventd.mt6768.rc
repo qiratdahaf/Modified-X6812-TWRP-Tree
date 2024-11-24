@@ -78,7 +78,7 @@
 #v4l2 camera
 #/dev/mtk_hcp     0660 camera system
 
-firmware_directories  /vendor/firmware/
+firmware_directories /etc/firmware/ /odm/firmware/ /vendor/firmware/ /firmware/image/
 uevent_socket_rcvbuf_size 16M
 
 # add the read write right of ttyUSB*
@@ -87,8 +87,8 @@ uevent_socket_rcvbuf_size 16M
 
 /dev/ccci*                0660   radio      radio
 /dev/ttyC*                0660   radio      radio
-/sys/kernel/ccci/ft_info       0644   radio       radio
-/sys/kernel/ccci/md1_postfix   0644   radio       radio
+/sys/kernel/ccci*    ft_info       0644   radio       radio
+/sys/kernel/ccci*    md1_postfix   0644   radio       radio
 
 # SGX device node a.k.a mtk display feature
 
