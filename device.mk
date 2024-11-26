@@ -1,4 +1,3 @@
-#
 # Copyright (C) 2024 The Android Open Source Project
 # Copyright (C) 2024 SebaUbuntu's TWRP device tree generator
 #
@@ -29,21 +28,13 @@ AB_OTA_PARTITIONS += \
     vbmeta \
     vbmeta_system \
     vbmeta_vendor \
-    vendor 
+    vendor
 
-# A/B
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
     POSTINSTALL_PATH_system=system/bin/otapreopt_script \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true
-
-# Virtual A/B
-ENABLE_VIRTUAL_AB := true
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
-
-# Dynamic Partitions
-PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # VNDK
 PRODUCT_TARGET_VNDK_VERSION := 30
@@ -54,7 +45,7 @@ PRODUCT_SHIPPING_API_LEVEL := 30
 # Health HAL
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-service
+    android.hardware.health@2.1-service \
     libhealthd.$(PRODUCT_PLATFORM)
 
 # Boot control HAL
@@ -69,8 +60,8 @@ PRODUCT_PACKAGES += \
     fastbootd
 
 PRODUCT_PACKAGES_DEBUG += \
-    bootctrl
-update_engine_client
+    bootctrl \
+    update_engine_client
 
 # Update Engine & Update Verifier 
 PRODUCT_PACKAGES += \
@@ -80,11 +71,11 @@ PRODUCT_PACKAGES += \
     update_verifier \
     update_engine_sideload
 
-Set vendor patch level
+# Set vendor patch level
 PRODUCT_PRODUCT_PROPERTIES += \
-    ro.bootimage.build.date.utc= Thu Sep 21 20:06:22 CST 2023
-    ro.build.date.utc= 1695297982
-    ro.vendor.build.security_patch= 2023-08-05
+    ro.bootimage.build.date.utc=Thu Sep 21 20:06:22 CST 2023 \
+    ro.build.date.utc=1695297982 \
+    ro.vendor.build.security_patch=2023-08-05
 
 PRODUCT_PACKAGES += \
     bootctrl.mt6768 \
@@ -114,3 +105,4 @@ RECOVERY_LIBRARY_SOURCE_FILES += \
 # OEM otacerts
 PRODUCT_EXTRA_RECOVERY_KEYS += \
     $(LOCAL_PATH)/security/
+
