@@ -9,29 +9,8 @@ DEVICE_PATH := device/infinix/X6812
 
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
-#BUILD_BROKEN_DUP_RULES := true
+BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
-
-# A/B
-AB_OTA_UPDATER := true
-AB_OTA_PARTITIONS += \
-    boot \
-    dtbo \
-    gz \
-    lk \
-    logo \
-    md1img \
-    preloader \
-    scp\
-    spmfw \
-    system \
-    system_ext \
-    product \
-    vendor \
-    tee \
-    vbmeta \
-    vbmeta_system \
-    vbmeta_vendor \
 
 # Architecture
 TARGET_ARCH := arm64
@@ -75,25 +54,20 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --ramdisk_offset $(BOARD_RAMDISK_OFFSET)
 BOARD_MKBOOTIMG_ARGS += --tags_offset $(BOARD_KERNEL_TAGS_OFFSET)
 BOARD_KERNEL_IMAGE_NAME := Image.gz
-
-#TARGET_KERNEL_CONFIG := infinix-x6812_defconfig
-#TARGET_KERNEL_SOURCE := kernel/infinix/infinix-x6812
+TARGET_KERNEL_CONFIG := X6812_defconfig
+TARGET_KERNEL_SOURCE := kernel/infinix/X6812
 
 # Kernel - prebuilt
-
 TARGET_FORCE_PREBUILT_KERNEL := true
-
 ifeq ($(TARGET_FORCE_PREBUILT_KERNEL),true)
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image.gz
-TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
-
-#TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
-BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 #BOARD_INCLUDE_DTB_IN_BOOTIMG := true
+TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
+BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
+
 endif
 
 # Android Verified Boot
-
 BOARD_AVB_ENABLE := true
 BOARD_AVB_VBMETA_SYSTEM := system
 BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
@@ -119,33 +93,14 @@ BOARD_INFINIX_DYNAMIC_PARTITIONS_PARTITION_LIST := \
         vendor \
         product
 
-# Other Partitions
-
-# Preloader Partition Preloader + Lk
-#BOARD_PRELOADER_PARTITION_SIZE := 524288 # 0.5 MB
-
+# Partitions
 BOARD_MAIN_SIZE := 7345774592  # 6.84 GB
-
-# Boot and Recovery Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 33554432  # 32 MB
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 33554432  # 32 MB
-
-# Vendor Boot Partition
 BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 67108864  # 64 MB
-
-# DTBO Partition
 BOARD_DTBOIMG_PARTITION_SIZE := 8388608  # 8 MB
-
-# Tee Partition
 BOARD_TEE_PARTITION_SIZE := 6291456  # 6 MB
-
-# Logo Partition
 BOARD_LOGO_PARTITION_SIZE := 8388608  # 8 MB 
-
-# Userdata Partition
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 3221225472  # 3 GB
-
-# Flash Block Size
 BOARD_FLASH_BLOCK_SIZE := 131072
 
 # Filesystem
@@ -163,8 +118,8 @@ TARGET_COPY_OUT_PRODUCT := product
 TARGET_COPY_OUT_SYSTEM_EXT = system_ext
 
 # Metadata
-BOARD_USES_METADATA_PARTITION := true
-#BOARD_ROOT_EXTRA_FOLDERS += metadata
+BOARD_USES_METADATA_PARTITION := true   #enabled
+BOARD_ROOT_EXTRA_FOLDERS += metadata
 
 # System as root
 BOARD_SUPPRESS_SECURE_ERASE := true
@@ -183,16 +138,12 @@ TW_CUSTOM_CLOCK_POS := "70"
 TW_CUSTOM_BATTERY_POS := "790"
 TW_EXTRA_LANGUAGES := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
-
 TW_USE_TOOLBOX := true
 TW_INCLUDE_REPACKTOOLS := true
 TW_INCLUDE_RESETPROP := true
 TW_INCLUDE_LIBRESETPROP := true
-TW_HAS_MTP := true
-
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_NO_SCREEN_BLANK := true
-
 TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_HAS_MTP := true
 TW_HAS_NO_RECOVERY_PARTITION := true
@@ -202,11 +153,15 @@ TW_EXCLUDE_PYTHON := true
 TW_EXCLUDE_TWRPAPP := true
 TW_INCLUDE_FB2PNG := true
 TARGET_USES_MKE2FS := true
-
 TARGET_NO_RECOVERY := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
 TW_MAX_BRIGHTNESS := 2837
+BOARD_USES_RECOVERY_AS_BOOT := true
+
+# TWRP Installer
+RECOVERY_INSTALLER_PATH := bootable/recovery/installer
+USE_RECOVERY_INSTALLER := true
 
 # FastbootD
 TW_INCLUDE_FASTBOOTD := true

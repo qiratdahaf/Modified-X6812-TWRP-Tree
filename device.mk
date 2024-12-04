@@ -10,6 +10,9 @@ LOCAL_PATH := device/infinix/X6812
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # A/B
+AB_OTA_UPDATER := true
+
+# A/B
 AB_OTA_PARTITIONS += \
     boot \
     dtbo \
@@ -104,5 +107,5 @@ RECOVERY_LIBRARY_SOURCE_FILES += \
 
 # OEM otacerts
 PRODUCT_EXTRA_RECOVERY_KEYS += \
-    $(LOCAL_PATH)/security/
+    $(LOCAL_PATH)/security
 
