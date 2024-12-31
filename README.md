@@ -1,90 +1,171 @@
-# Infinix X6812 TWRP Device Tree
-
-This is the non-official TWRP device tree for the **Infinix X6812** (Infinix Hot 11S). TWRP (Team Win Recovery Project) is a custom recovery for Android devices that allows you to install custom ROMs, kernels, and perform other advanced functions.
-
-## Features
-
-- **Custom Recovery**: Install custom ROMs, kernels, and other modifications.
-- **Backup and Restore**: Create Nandroid backups and restore them.
-- **Advanced Wipe**: Perform various wipes like factory reset, cache, data, etc.
-- **Flashable ZIP Support**: Flash ZIP files, including Magisk, custom mods, and more.
-- **Touchscreen Support**: Full touchscreen support for easy navigation.
-- **Decryption Support**: Decrypt User data.
-- - **OTG Support**: USB on the go support.
-## Device Information
-
-- **Device Name**: Infinix X6812 (Infinix Hot 11S)
-- **Device Codename**: `X6812`
-- **OEM**: Infinix
-- **Launch Year**: 2021
-- **Operating System**: Android 11, XOS 7.6
-- **Chipset**: MediaTek Helio G88 (12nm)
-- **CPU**: Octa-core (2x Cortex-A75 2.0 GHz & 6x Cortex-A55 1.8 GHz)
-- **GPU**: Mali-G52 MC2
-- **RAM**: 4GB / 6GB
-- **Storage**: 64GB / 128GB (expandable via microSD card up to 512GB)
-- **Display**: 6.78-inch IPS LCD, 90Hz, 1080 x 2460 pixels (~396 ppi density)
-- **Camera**:
-  - **Rear**: Triple (50 MP, f/1.6, 26mm wide + 2 MP, f/2.4, 50mm macro + 2 MP, f/2.4 depth)
-  - **Front**: 8 MP, f/2.0
-- **Battery**: 5000 mAh, 18W fast charging
-- **SIM**: Dual SIM (Nano-SIM, dual stand-by)
-- **Fingerprint**: back-mounted fingerprint sensor
-- **Colors**: Polar Black, Green, Purple
-
-## Prerequisites
-
-To build TWRP for Infinix X6812, you need the following:
-
-- A Linux environment (Ubuntu preferred)
-- Basic knowledge of building Android custom recoveries
-- A working AOSP (Android Open Source Project) tree
-- The Infinix X6812 device tree (which is available here)
-
-## Getting Started
-1. Set Up the Environment
-
-sudo apt update
-sudo apt install git-core gnupg flex bison build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev ccache libgl1-mesa-dev libxml2-utils xsltproc unzip python3
-# use universe repo to install these all
-
-2. Initialize the TWRP Repo
-3. 
-mkdir ~/twrp
+Compatible with 
 repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
-repp sync
-# must have good strong internet connection, be ready to download more than 80gb of source code.
 
-3. Set Up the Device Tree
 
-git clone https://github.com/qiratdahaf/Modified-X6812-TWRP-Tree.git
-# fork my repo and use your link
-# make sure to clone it into device folder
-# had to be rename from x6812 to X6812 to make it detectable.
+=================================================================================================
+Device Info :
+Released Date 2021, September 21
+OS            Android 11, XOS 7.6
 
-4. Set Up Build Configuration
-. build/envsetup.sh
-lunch
-# select no from list showing twrp_X6812-eng
+MANUFACTURER	INFINIX MOBILITY LIMITED
+BRAND	        Infinix
+MODEL	        Infinix X6812
+PRODUCT	      X6812-GL
+PLATFORM	    mt6769
+API	          11 (30)
+KERNEL	      4.14.186-g8ed8f1a9884b-dirty
+SOC	          Helio G88
+RESOLUTION	  2460x1080
+LCM	          nt36672c_fhdp_dsi_vdo_dsc_tm_tm_x6812
+CAMERA	      s5kjn1_mipiraw
+              gc8034_mipiraw
+              ov02b1b_mipiraw
+              gc6153_serial_yuv
+LENS	        MAINAF
+ACCELEROMETER	mxc4005x
+ALSPS	        stk33562_l
+MAGNETOMETER	qmc6308_x6812
+GYROSCOPE	    GYROSCOPE
+CHARGER	      rt9471
+              sm5109
+WIFI	        CONSYS_MT6768
+OTHER	        CAM_CAL_DEV2
+              CAM_CAL_DRV
+              ccu_i2c_2_hwtrg
+              ccu_i2c_4_hwtrg
+              flashlights-aw36515
+              kd_camera_hw
+              kd_camera_hw_bus2
+              kd_camera_hw_bus3
+              kd_camera_hw_bus4
+              speaker_amp
+CPU	          MT6769H
+CORES	        8
+FAMILY	      Cortex-A75 Cortex-A55
+CLUSTERS	    2 x 2.00 GHz 6 x 1.80 GHz
+CLOCK_SPEED	  500 - 2000 MHz
+REVISION	    r3p1 r1p0
+TECHPROCESS	  12 nm
+GPU_VENDOR	  ARM
+GPU_MODEL	    Mali-G52 MC2
+GPU_CLOCK	    299 - 1000 MHz
+GPU_VERSION	  3.2 v1.r26p0-01eac0.f143e3f9482527bbad36b3ec27f93e59
+RAM	          4 GB LPDDR4X
+FLASH	        eMMC 5.1
+FINGERPRINT  	tran_keys
 
-5. Build the TWRP Image
-mka recoveryimage
+=================================================================================================
+basic info: 
 
-6. Output
-#Once the build completes, the boot.img will be found in: **out/target/product/x6812/boot.img**
+IPS           LCD, 90Hz, 500 nits (peak)
+              1080 x 2480 pixels (~399 ppi density)
+Chipset	      Mediatek MT6769H Helio G88 (12 nm)
+Camera back   50 MP, f/1.6, (wide), PDAF
+              2 MP, (depth)
+              QVGA
+Features	    Quad-LED flash, HDR, panorama
+Video	        1440p@30fps
+Camera front  8 MP, f/2.0, (wide)
+Features      Dual-LED flash
+Video	        1440p@30fps
+Comms	        WLAN Wi-Fi 802.11 a/b/g/n
+              Bluetooth	5.0, A2DP, LE
+              Positioning	 GPS
+NFC	          No
+Radio	        FM radio
+USB	          USB Type-C 2.0, OTG
+Sensors	      Fingerprint (rear-mounted)
+              Accelerometer
+              Gyro
+              Proximity
+              Compass
+Battery		    5000 mAh
 
-7. Flash & Boot to TWRP 
 
-fastboot flash recovery out/target/product/x6812/boot.img
-fastboot reboot recovery
-# disable vbmeta.
+============================================================================
+Output Build process log:
 
-Known Issues
+ryzen@Ryzen:~/twrp$ make clean
+22:00:42 ************************************************************
+22:00:42 You are building on a machine with 11.4GB of RAM
+22:00:42
+22:00:42 The minimum required amount of free memory is around 16GB,
+22:00:42 and even with that, some configurations may not work.
+22:00:42
+22:00:42 If you run into segfaults or other errors, try reducing your
+22:00:42 -j value.
+22:00:42 ************************************************************
+22:00:43 Entire build directory removed.
 
-Yet to be tested!
+#### build completed successfully (1 seconds) ####
 
-Acknowledgments
-Thanks to Team Win Recovery Project (TWRP) for the recovery base.
-Special thanks to **@Serguc_Serega &  @PizzaG & @jprimero15** for their support and resources and more importantly their valuable time.
+ryzen@Ryzen:~/twrp$ lunch twrp_X6812-eng
+Trying dependencies-only mode on a non-existing device tree?
 
+============================================
+PLATFORM_VERSION_CODENAME=REL
+PLATFORM_VERSION=11
+TARGET_PRODUCT=twrp_X6812
+TARGET_BUILD_VARIANT=eng
+TARGET_BUILD_TYPE=release
+TARGET_ARCH=arm64
+TARGET_ARCH_VARIANT=armv8-a
+TARGET_CPU_VARIANT=generic
+TARGET_2ND_ARCH=arm
+TARGET_2ND_ARCH_VARIANT=armv8-2a
+TARGET_2ND_CPU_VARIANT=generic
+HOST_ARCH=x86_64
+HOST_2ND_ARCH=x86
+HOST_OS=linux
+HOST_OS_EXTRA=Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-Ubuntu-24.04.1-LTS
+HOST_CROSS_OS=windows
+HOST_CROSS_ARCH=x86
+HOST_CROSS_2ND_ARCH=x86_64
+HOST_BUILD_TYPE=release
+BUILD_ID=RQ1A.210205.004
+OUT_DIR=out
+============================================
+ryzen@Ryzen:~/twrp$ make bootimage
+22:00:58 ************************************************************
+22:00:58 You are building on a machine with 11.4GB of RAM
+22:00:58
+22:00:58 The minimum required amount of free memory is around 16GB,
+22:00:58 and even with that, some configurations may not work.
+22:00:58
+22:00:58 If you run into segfaults or other errors, try reducing your
+22:00:58 -j value.
+22:00:58 ************************************************************
+============================================
+PLATFORM_VERSION_CODENAME=REL
+PLATFORM_VERSION=11
+TARGET_PRODUCT=twrp_X6812
+TARGET_BUILD_VARIANT=eng
+TARGET_BUILD_TYPE=release
+TARGET_ARCH=arm64
+TARGET_ARCH_VARIANT=armv8-a
+TARGET_CPU_VARIANT=generic
+TARGET_2ND_ARCH=arm
+TARGET_2ND_ARCH_VARIANT=armv8-2a
+TARGET_2ND_CPU_VARIANT=generic
+HOST_ARCH=x86_64
+HOST_2ND_ARCH=x86
+HOST_OS=linux
+HOST_OS_EXTRA=Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-Ubuntu-24.04.1-LTS
+HOST_CROSS_OS=windows
+HOST_CROSS_ARCH=x86
+HOST_CROSS_2ND_ARCH=x86_64
+HOST_BUILD_TYPE=release
+BUILD_ID=RQ1A.210205.004
+OUT_DIR=out
+============================================
+[ 65% 188/287] including bootable/recovery/Android.mk ...
+bootable/recovery/prebuilt/Android.mk:399: warning: vendor_hw:  bootable/recovery/prebuilt/relink.sh out/target/product/X6812/recovery/root/vendor/bin/hw
+[ 33% 5732/16999] //bionic/libc:libc.llndk versioner preprocess include [arm]                                                                  warning: attempted to generate guard with empty availability: obsoleted = 21
+warning: attempted to generate guard with empty availability: obsoleted = 23
+[ 33% 5774/16999] //bionic/libc:libc.llndk versioner preprocess include
+warning: attempted to generate guard with empty availability: obsoleted = 21
+warning: attempted to generate guard with empty availability: obsoleted = 23
+[ 92% 15689/16999] Target buildinfo: out/target/product/X6812/obj/ETC/system_build_prop_intermediates/build.prop                               Target buildinfo from: device/infinix/X6812/system.prop
+[100% 16999/16999] Target boot image from recovery: out/target/product/X6812/boot.img                                                          
+#### build completed successfully (14:44 (mm:ss)) ####                                                                                                                                               
 
